@@ -16,7 +16,7 @@ public class GUI extends JFrame implements ActionListener {
 	}
 	private static final long serialVersionUID = 6411499808530678723L;
 
-	BufferedImage embedBufferdImage;
+	BufferedImage embedBufferdImage; 
 
 	public GUI(){
 		try{UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());}catch(Exception e){e.printStackTrace();}
