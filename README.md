@@ -12,6 +12,9 @@ File Embedding:
 File Detaching:  
 [![File Embedding][detach_small]][detach_large]
 
+
+In the `Example` folder, there are 3 files. I embedded `Input Image and File.jpg` into itself which results in `Steganography Output.png`. If it looks the exact same then the steganography works. `File after being extracted.jpg` is the input image/file after being extracted. 
+ 
  
 [embed_large]: https://i.imgur.com/xrnJHgj.png
 [detach_large]: https://i.imgur.com/coMZxT2.png
