@@ -213,7 +213,13 @@ public class EmbedPanel extends JPanel implements ActionListener {
 		ImageIcon image = new ImageIcon(img.getScaledInstance((int)newDimension.getWidth(), (int)newDimension.getHeight(), Image.SCALE_SMOOTH));
 		embedImage.setIcon(image);
 		imageCapacity = Steganography.getAvailableBits(img);
-		imageEmbedInfo.setText("    This image can hold " + df.format(Steganography.bitsToMegabytes(imageCapacity)) + " mb.");
+		
+		if(imageCapacity > 8000000) {
+			imageEmbedInfo.setText("    This image can hold " + df.format(Steganography.bitsToMegabytes(imageCapacity)) + " MB.");
+		}else {
+			imageEmbedInfo.setText("    This image can hold " + df.format(Steganography.bitsToKilobytes(imageCapacity)) + " kB.");
+		}
+		
 		refreshGUI();
 		runUpdate();
 	}
@@ -224,7 +230,12 @@ public class EmbedPanel extends JPanel implements ActionListener {
 			fileEmbedInfo.setText("    The file is too large, please try a different one.");
 			inputEmbedFile = null;
 		}else{
-			fileEmbedInfo.setText("    This file needs " + df.format(Steganography.bitsToMegabytes(fileSize)) + " mb of space.");
+			if(fileSize > 8000000) {
+				fileEmbedInfo.setText("    This file needs " + df.format(Steganography.bitsToMegabytes(fileSize)) + " MB of space.");
+			}else {
+				fileEmbedInfo.setText("    This file needs " + df.format(Steganography.bitsToKilobytes(fileSize)) + " kB of space.");
+			}
+			
 		}
 	}
 

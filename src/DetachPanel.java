@@ -163,9 +163,16 @@ public class DetachPanel extends JPanel implements ActionListener {
 			return;
 		}else{
 			double sizeInMB = roundToHundreth(Steganography.bitsToMegabytes(hi.getHeaderBits()));
-			imageDetachInfo.setText("    This image seems to be valid and contains "
-					+ (sizeInMB == 0 ? "<1" : sizeInMB) + " mb. If it is valid, it will be a '"
-					+ hi.getFileExtention() + "' file.");
+			if(hi.getHeaderBits() > 8000000) {
+				imageDetachInfo.setText("    This image seems to be valid and contains "
+						+ Steganography.bitsToMegabytes(hi.getHeaderBits()) + " MB. If it is valid, it will be a '"
+						+ hi.getFileExtention() + "' file.");
+			}else {
+				imageDetachInfo.setText("    This image seems to be valid and contains "
+						+ Steganography.bitsToKilobytes(hi.getHeaderBits()) + " kB. If it is valid, it will be a '"
+						+ hi.getFileExtention() + "' file.");
+			}
+			
 			Image newImage = Steganography.getDrawnOutline(img, hi.getHeaderBits(), newDimension);
 			ImageIcon nII = new ImageIcon(newImage);
 			detachImage.setIcon(nII);

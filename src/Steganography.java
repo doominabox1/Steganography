@@ -25,7 +25,7 @@ public class Steganography{
 		BufferedImage image;
 		try {
 			image = (BufferedImage) imagePath ; // Reads the input image
-			data = Files.readAllBytes( filePath.toPath() ); // Pulls all the bytes out of an image and puts them in an array (Note: This is why the file can only be < 33mb)
+			data = Files.readAllBytes( filePath.toPath() ); // Pulls all the bytes out of a file and puts them in an array (Note: This is why the file can only be < 33mb)
 		} catch (IOException e) {
 			e.printStackTrace();
 			return null;
@@ -239,6 +239,9 @@ public class Steganography{
 	public static long bitsToMegabytes(long bits){
 		return bits / (long)8388608;
 	}
+	public static long bitsToKilobytes(long bits){
+		return bits / (long)8192;
+	}
 
 	public static long getNeededBits(File file){
 		long fileLength = file.length();
@@ -250,7 +253,7 @@ public class Steganography{
 	}
 
 	public static long getAvailableBits(Image img){
-		return (long)img.getWidth(null) * (long)img.getHeight(null) * (long)(2 * 3);
+		return (long)img.getWidth(null) * (long)img.getHeight(null) * (long)(2 * 3); // Two bits per color channel 
 	}
 
 	public static int[] concatArrays(int[] a, int[] b) {
